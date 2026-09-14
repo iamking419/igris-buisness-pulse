@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank you — IGRIS Business Pulse</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="/env-config.js"></script>
+</head>
+<body class="bg-white text-[var(--ink)] min-h-screen flex flex-col">
+  <script type="module" src="/src/main.jsx"></script>
+
+<header class="border-b border-[var(--line)]">
+  <div class="max-w-2xl mx-auto px-6 sm:px-8 py-5">
+    <div class="flex items-center gap-3">
+      <img src="assets/igris-logo.png" alt="IGRIS Technologies" class="h-7 w-auto" />
+      <span class="font-semibold tracking-tight text-[15px]">IGRIS</span>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 max-w-2xl mx-auto w-full px-6 sm:px-8 py-20 sm:py-28">
+  <p class="mono-tag text-xs text-[var(--muted)] mb-6">RESPONSE RECEIVED</p>
+  <h1 class="text-3xl sm:text-5xl font-medium leading-tight mb-6">Your response is now part of the picture.</h1>
+  <p class="text-[var(--muted)] leading-relaxed max-w-lg">
+    Your answers help us understand what Nigerian businesses actually need — not what we assume they need.
+  </p>
+  <p id="response-id" class="mono-tag text-sm text-[var(--muted)] mt-8"></p>
+
+  <!-- What happens next -->
+  <div class="mt-16 pt-10 border-t border-[var(--line)]">
+    <p class="text-sm text-[var(--muted)] mb-3">WHAT HAPPENS NEXT</p>
+    <p class="leading-relaxed max-w-lg">
+      Your response joins the research dataset. As responses grow, we'll look for patterns across industries, business types, and operational challenges.
+    </p>
+  </div>
+
+  <!-- Personalized recommendation — only renders if one applies -->
+  <div id="recommendation-block" class="hidden mt-16 pt-10 border-t border-[var(--line)]">
+    <p class="text-sm text-[var(--muted)] mb-3">A POSSIBLE NEXT STEP</p>
+    <p id="rec-eyebrow" class="mb-2"></p>
+    <p id="rec-body" class="text-[var(--muted)] leading-relaxed max-w-lg mb-5"></p>
+    <a id="rec-cta" href="#" target="_blank" rel="noopener" class="link-underline text-sm"></a>
+  </div>
+
+  <!-- Share loop -->
+  <div class="mt-16 pt-10 border-t border-[var(--line)]">
+    <p class="mb-1">Know another business owner?</p>
+    <p class="text-sm text-[var(--muted)] mb-5">Help us get a better picture.</p>
+    <div class="flex flex-wrap gap-4">
+      <button id="btn-share" type="button" class="arrow-cta inline-flex items-center gap-2 border border-[var(--ink)] px-6 py-3.5 text-sm hover:bg-[var(--ink)] hover:text-white transition-colors duration-200">
+        Share Business Pulse <span class="arrow-glyph">→</span>
+      </button>
+      <a id="btn-whatsapp" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-[var(--line)] px-6 py-3.5 text-sm hover:border-[var(--ink)]">
+        Share on WhatsApp
+      </a>
+    </div>
+    <p id="share-copied" class="hidden text-sm text-[var(--muted)] mt-3">Link copied.</p>
+  </div>
+
+  <div class="mt-16">
+    <a href="/" class="link-underline text-sm">← Back to Business Pulse</a>
+  </div>
+</main>
+
+<script src="js/recommendation.js"></script>
+<script>
+  const lastId = sessionStorage.getItem("igris_bp_last_response_id");
+  if (lastId) {
+    document.getElementById("response-id").textContent = lastId;
+  }
+
+  // ---- Personalized recommendation ----
+  let lastResponse = null;
+  try {
+    lastResponse = JSON.parse(sessionStorage.getItem("igris_bp_last_response") || "null");
+  } catch (e) {
+    lastResponse = null;
+  }
+  const rec = lastResponse ? getRecommendation(lastResponse) : null;
+  if (rec) {
+    document.getElementById("recommendation-block").classList.remove("hidden");
+    document.getElementById("rec-eyebrow").textContent = rec.eyebrow;
+    document.getElementById("rec-body").textContent = rec.body;
+    const cta = document.getElementById("rec-cta");
+    cta.textContent = rec.cta + " →";
+    cta.href = rec.href;
+  }
+
+  // ---- Share loop ----
+  const shareText = "I'm taking part in IGRIS Business Pulse — a short research survey about the real challenges Nigerian businesses face. It takes about 2 minutes.";
+  // Share the site root (support both legacy .html files and clean routes)
+  const shareUrl = window.location.origin + "/";
+
+  document.getElementById("btn-whatsapp").href =
+    "https://wa.me/?text=" + encodeURIComponent(shareText + " " + shareUrl);
+
+  document.getElementById("btn-share").addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "IGRIS Business Pulse", text: shareText, url: shareUrl });
+        return;
+      } catch (e) {
+        // user cancelled or share failed — fall through to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      const note = document.getElementById("share-copied");
+      note.classList.remove("hidden");
+      window.setTimeout(() => note.classList.add("hidden"), 2500);
+    } catch (e) {
+      console.error("IGRIS Business Pulse: could not copy share link", e);
+    }
+  });
+</script>
+</body>
+</html>

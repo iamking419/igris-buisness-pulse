@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — IGRIS Business Pulse</title>
+<meta name="robots" content="noindex, nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="/env-config.js"></script>
+</head>
+<body class="bg-white text-[var(--ink)] min-h-screen">
+  <script type="module" src="/src/main.jsx"></script>
+
+<!-- ================= LOGIN GATE ================= -->
+<div id="admin-login" class="min-h-screen flex items-center justify-center px-6">
+  <div class="w-full max-w-sm">
+    <div class="flex items-center gap-3 mb-8">
+      <img src="assets/igris-logo.png" alt="IGRIS Technologies" class="h-8 w-auto" />
+      <span class="font-semibold tracking-tight text-[15px]">IGRIS</span>
+    </div>
+    <p class="mono-tag text-xs text-[var(--muted)] mb-1">IGRIS BUSINESS PULSE</p>
+    <h1 class="text-2xl font-medium mb-8">Admin</h1>
+    <form id="login-form">
+      <label for="password-input" class="block text-sm text-[var(--muted)] mb-2">Password</label>
+      <input id="password-input" type="password" required
+        class="w-full border border-[var(--line)] focus-visible:border-[var(--ink)] px-4 py-3.5 text-[15px] mb-2" />
+      <p id="login-error" class="hidden text-sm text-[var(--ink)] mb-4">Incorrect password.</p>
+      <button type="submit" class="w-full bg-[var(--ink)] text-white px-6 py-3.5 text-sm hover:opacity-90 mt-4">
+        Access Research
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="admin-dashboard" class="hidden">
+  <header class="border-b border-[var(--line)]">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/igris-logo.png" alt="IGRIS Technologies" class="h-7 w-auto" />
+        <div class="leading-tight">
+          <p class="text-sm">IGRIS Business Pulse</p>
+          <p class="text-xs text-[var(--muted)] mono-tag">RESEARCH ADMINISTRATION</p>
+        </div>
+      </div>
+      <button id="btn-logout" class="text-sm text-[var(--muted)] hover:text-[var(--ink)]">Log out</button>
+    </div>
+    <nav class="max-w-7xl mx-auto px-6 sm:px-8 flex gap-2 overflow-x-auto pb-3 text-sm">
+      <button data-panel="overview" class="bg-[var(--ink)] text-white px-4 py-2 whitespace-nowrap">Overview</button>
+      <button data-panel="responses" class="px-4 py-2 whitespace-nowrap border border-[var(--line)]">Responses</button>
+      <button data-panel="insights" class="px-4 py-2 whitespace-nowrap border border-[var(--line)]">Insights</button>
+      <button data-panel="export" class="px-4 py-2 whitespace-nowrap border border-[var(--line)]">Export</button>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 sm:px-8 py-10">
+
+    <!-- OVERVIEW -->
+    <section id="panel-overview" class="admin-panel">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-14">
+        <div class="border-t border-[var(--ink)] pt-3">
+          <p id="stat-total" class="text-3xl font-medium">0</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Total responses</p>
+        </div>
+        <div class="border-t border-[var(--ink)] pt-3">
+          <p id="stat-today" class="text-3xl font-medium">0</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Responses today</p>
+        </div>
+        <div class="border-t border-[var(--ink)] pt-3">
+          <p id="stat-businesses" class="text-3xl font-medium">0</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Business types</p>
+        </div>
+        <div class="border-t border-[var(--ink)] pt-3">
+          <p id="stat-optins" class="text-3xl font-medium">0</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Contact opt-ins</p>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-x-16 gap-y-10">
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Top challenges</h3>
+          <div id="overview-challenges"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Top customer channels</h3>
+          <div id="overview-channels"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Top digital barriers</h3>
+          <div id="overview-barriers"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Most time-consuming tasks</h3>
+          <div id="overview-timeconsuming"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPONSES -->
+    <section id="panel-responses" class="admin-panel hidden">
+      <div class="flex flex-col sm:flex-row gap-3 mb-8">
+        <input id="search-responses" type="text" placeholder="Search responses…"
+          class="border border-[var(--line)] focus-visible:border-[var(--ink)] px-4 py-2.5 text-sm flex-1" />
+        <select id="filter-business-type" class="border border-[var(--line)] px-4 py-2.5 text-sm">
+          <option value="">All business types</option>
+        </select>
+        <select id="filter-challenge" class="border border-[var(--line)] px-4 py-2.5 text-sm">
+          <option value="">All challenges</option>
+        </select>
+        <select id="filter-optin" class="border border-[var(--line)] px-4 py-2.5 text-sm">
+          <option value="">Contact: any</option>
+          <option value="Yes">Opted in</option>
+          <option value="No">Not opted in</option>
+        </select>
+      </div>
+
+      <table class="w-full text-sm hidden sm:table">
+        <thead>
+          <tr class="text-left text-[var(--muted)] border-b border-[var(--line)]">
+            <th class="sortable py-2 pr-4 font-normal" data-field="createdAt">Date <span class="sort-arrow">↑</span></th>
+            <th class="sortable py-2 pr-4 font-normal" data-field="businessType">Business type <span class="sort-arrow">↑</span></th>
+            <th class="sortable py-2 pr-4 font-normal" data-field="biggestChallenge">Biggest challenge <span class="sort-arrow">↑</span></th>
+            <th class="sortable py-2 pr-4 font-normal" data-field="customerChannels">Customer channel <span class="sort-arrow">↑</span></th>
+            <th class="py-2 pr-4 font-normal">Desired improvement</th>
+            <th class="sortable py-2 font-normal" data-field="contactPermission">Contact <span class="sort-arrow">↑</span></th>
+          </tr>
+        </thead>
+        <tbody id="responses-tbody"></tbody>
+      </table>
+
+      <div id="responses-cards" class="sm:hidden"></div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section id="panel-insights" class="admin-panel hidden">
+      <div class="grid sm:grid-cols-2 gap-x-16 gap-y-10">
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Customer channels</h3>
+          <div id="insights-channels"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Operational challenges</h3>
+          <div id="insights-challenges"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Time-consuming work</h3>
+          <div id="insights-timeconsuming"></div>
+        </div>
+        <div>
+          <h3 class="text-sm text-[var(--muted)] mb-4">Digital barriers</h3>
+          <div id="insights-barriers"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPORT -->
+    <section id="panel-export" class="admin-panel hidden">
+      <div class="max-w-md">
+        <h3 class="text-lg mb-3">Export responses</h3>
+        <p class="text-sm text-[var(--muted)] mb-6 leading-relaxed">
+          Downloads every stored response as a CSV file, including all research fields and optional contact details.
+        </p>
+        <button id="btn-export" class="bg-[var(--ink)] text-white px-6 py-3.5 text-sm hover:opacity-90">
+          Download CSV
+        </button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Response detail overlay (kept for functionality but forcibly hidden by default) -->
+<div id="response-detail" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto" style="display:none">
+  <div class="max-w-2xl mx-auto px-6 sm:px-8 py-10">
+    <button id="close-detail" class="text-sm text-[var(--muted)] hover:text-[var(--ink)] mb-8">← Close</button>
+    <div id="response-detail-body"></div>
+  </div>
+</div>
+
+<script src="data/questions.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api-client.js"></script>
+<script src="js/data-store.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

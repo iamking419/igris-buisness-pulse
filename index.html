@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IGRIS Business Pulse — What's actually holding Nigerian businesses back?</title>
+<meta name="description" content="An IGRIS Technologies research initiative. We're asking Nigerian businesses what's actually difficult, before building more technology." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="/env-config.js"></script>
+</head>
+<body class="bg-white text-[var(--ink)]">
+  <!-- React mount (minimal, does not change layout) -->
+  <script type="module" src="/src/main.jsx"></script>
+
+<!-- ================= HEADER ================= -->
+<header class="border-b border-[var(--line)]">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="assets/igris-logo.png" alt="IGRIS Technologies" class="h-8 w-auto" />
+      <span class="flex items-baseline gap-2">
+        <span class="font-semibold tracking-tight text-[15px]">IGRIS TECH</span>
+        <span class="text-sm tracking-wide text-[var(--muted)] hidden sm:inline">Business Pulse</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#research" class="link-underline">Research</a>
+      <a href="#why" class="link-underline">Why We're Asking</a>
+      <a href="#loop" class="link-underline">How It Works</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="/survey" class="arrow-cta hidden sm:inline-flex items-center gap-2 border border-[var(--ink)] px-5 py-2.5 text-sm hover:bg-[var(--ink)] hover:text-white transition-colors duration-200">
+        Take the Survey <span class="arrow-glyph">→</span>
+      </a>
+      <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 -mr-2" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 6h18M2 11h18M2 16h18" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-menu" class="hidden md:hidden flex-col border-t border-[var(--line)] px-6 py-4 gap-4 text-sm">
+    <a href="#research">Research</a>
+    <a href="#why">Why We're Asking</a>
+    <a href="#loop">How It Works</a>
+    <a href="/survey" class="border border-[var(--ink)] px-4 py-2.5 text-center mt-2">Take the Survey →</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-14 lg:gap-10 items-start">
+      <div>
+        <p class="mono-tag text-xs text-[var(--muted)] mb-6">IGRIS TECHNOLOGIES / BUSINESS PULSE 2026</p>
+        <h1 class="text-4xl sm:text-6xl leading-[1.08] font-medium max-w-xl">
+          What's actually holding Nigerian businesses back?
+        </h1>
+        <p class="mt-6 max-w-md text-lg text-[var(--muted)] leading-relaxed">
+          Before we build more technology, we want to understand the problems businesses are already dealing with.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-6">
+          <a href="/survey" class="arrow-cta inline-flex items-center gap-2 bg-[var(--ink)] text-white px-7 py-4 text-sm hover:opacity-90 transition-opacity duration-200">
+            Take the 2-minute survey <span class="arrow-glyph">→</span>
+          </a>
+          <a href="#why" class="link-underline text-sm">Why we're asking</a>
+        </div>
+
+        <div class="mt-14 flex gap-10 sm:gap-14">
+          <div>
+            <p class="text-3xl font-medium"><span data-count-to="2">0</span> min</p>
+            <p class="text-xs text-[var(--muted)] mt-1 mono-tag">TIME</p>
+          </div>
+          <div>
+            <p class="text-3xl font-medium"><span data-count-to="10">0</span></p>
+            <p class="text-xs text-[var(--muted)] mt-1 mono-tag">QUESTIONS</p>
+          </div>
+          <div>
+            <p class="text-3xl font-medium">0</p>
+            <p class="text-xs text-[var(--muted)] mt-1 mono-tag">SIGN-UP</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero visual: a preview of the actual research index, not decoration -->
+      <div class="border border-[var(--line)] p-6 sm:p-8">
+        <p class="mono-tag text-xs text-[var(--muted)] mb-6">RESEARCH INDEX / 01–08</p>
+        <div class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+          <p><span class="text-[var(--muted)]">01</span> Customers</p>
+          <p><span class="text-[var(--muted)]">05</span> Digital presence</p>
+          <p><span class="text-[var(--muted)]">02</span> Orders</p>
+          <p><span class="text-[var(--muted)]">06</span> Automation</p>
+          <p><span class="text-[var(--muted)]">03</span> Money</p>
+          <p><span class="text-[var(--muted)]">07</span> Growth</p>
+          <p><span class="text-[var(--muted)]">04</span> Operations</p>
+          <p><span class="text-[var(--muted)]">08</span> Technology</p>
+        </div>
+        <div class="h-px bg-[var(--line)] my-6"></div>
+        <p class="text-sm text-[var(--muted)] leading-relaxed">Eight areas. One question at a time. Your answers become part of the research dataset.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule max-w-6xl mx-auto"></div>
+
+  <!-- ================= INTRODUCTION ================= -->
+  <section id="why" class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28 reveal">
+    <div class="grid sm:grid-cols-[0.9fr_1.1fr] gap-8 sm:gap-16">
+      <h2 class="text-3xl sm:text-4xl font-medium leading-snug">We'd rather ask than assume.</h2>
+      <div class="text-[var(--muted)] leading-relaxed space-y-4 sm:pt-2">
+        <p>Technology is often built around assumptions — about what a business needs, how it operates, what would make it easier.</p>
+        <p>Business Pulse exists to ask Nigerian businesses directly what's difficult, inefficient, expensive, frustrating, or unnecessarily manual — instead of guessing.</p>
+        <p>IGRIS Technologies builds websites, software, AI solutions, and automation. But the research comes first. IGRIS services are secondary.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule max-w-6xl mx-auto"></div>
+
+  <!-- ================= WHAT WE'RE RESEARCHING ================= -->
+  <section id="research" class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28 reveal">
+    <div class="flex items-baseline justify-between mb-14 gap-4 flex-wrap">
+      <h2 class="text-3xl sm:text-4xl font-medium">What we're researching</h2>
+      <p class="text-sm text-[var(--muted)]">Eight areas, one survey.</p>
+    </div>
+    <div class="border-t border-[var(--line)]">
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">01</span>
+        <h3 class="text-lg">Customers</h3>
+        <p class="text-sm text-[var(--muted)]">How businesses attract customers and reach people beyond their immediate network.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">02</span>
+        <h3 class="text-lg">Orders</h3>
+        <p class="text-sm text-[var(--muted)]">How businesses receive, track, confirm, and manage orders.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">03</span>
+        <h3 class="text-lg">Money</h3>
+        <p class="text-sm text-[var(--muted)]">How businesses handle payments, invoices, records, and cash flow.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">04</span>
+        <h3 class="text-lg">Operations</h3>
+        <p class="text-sm text-[var(--muted)]">Manual work, repetitive tasks, and where mistakes creep in.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">05</span>
+        <h3 class="text-lg">Digital presence</h3>
+        <p class="text-sm text-[var(--muted)]">Websites, WhatsApp, social platforms, and search.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">06</span>
+        <h3 class="text-lg">Automation</h3>
+        <p class="text-sm text-[var(--muted)]">Tasks businesses repeatedly perform that could potentially be simplified.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">07</span>
+        <h3 class="text-lg">Growth</h3>
+        <p class="text-sm text-[var(--muted)]">What prevents businesses from reaching more customers or operating more efficiently.</p>
+      </a>
+      <a href="/survey" class="research-row group grid sm:grid-cols-[80px_200px_1fr] gap-1 sm:gap-8 items-baseline py-6 border-b border-[var(--line)] px-1">
+        <span class="text-sm text-[var(--muted)]">08</span>
+        <h3 class="text-lg">Technology</h3>
+        <p class="text-sm text-[var(--muted)]">What tools businesses already use, and what they actually want.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= THE BIG QUESTION ================= -->
+  <section class="bg-[var(--ink)] text-white">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 py-24 sm:py-32 reveal">
+      <p class="mono-tag text-xs text-white/50 mb-6">THE QUESTION AT THE CENTER OF THIS PROJECT</p>
+      <p class="text-2xl sm:text-5xl leading-tight max-w-3xl font-medium">
+        If you could make one part of running your business easier with technology, what would you choose<span class="cursor-blink">&nbsp;</span>
+      </p>
+      <a href="/survey" class="arrow-cta inline-flex items-center gap-2 mt-10 border border-white px-7 py-4 text-sm hover:bg-white hover:text-[var(--ink)] transition-colors duration-200">
+        Tell us <span class="arrow-glyph">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= WHY PARTICIPATE ================= -->
+  <section class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28 reveal">
+    <div class="grid sm:grid-cols-[0.9fr_1.1fr] gap-8 sm:gap-16">
+      <h2 class="text-3xl sm:text-4xl font-medium leading-snug">Why it's worth two minutes.</h2>
+      <div class="text-[var(--muted)] leading-relaxed space-y-4 sm:pt-2">
+        <p>No prizes, no fake rewards. Your response contributes to a larger picture of what Nigerian businesses actually need.</p>
+        <p>As responses grow, IGRIS will publish aggregated findings — Business Pulse 2026. Real responses. Real patterns. Real problems.</p>
+        <ul class="pt-2 space-y-1.5 text-sm">
+          <li>· Honest answers matter more than polished ones.</li>
+          <li>· Nothing to buy — this is research, not a sales funnel.</li>
+          <li>· Contact information is never required.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule max-w-6xl mx-auto"></div>
+
+  <!-- ================= RESEARCH LOOP ================= -->
+  <section id="loop" class="max-w-6xl mx-auto px-6 sm:px-8 py-20 sm:py-28 reveal">
+    <h2 class="text-3xl sm:text-4xl font-medium mb-4">How this research gets used</h2>
+    <p class="text-[var(--muted)] max-w-md mb-14">Your response becomes data. Data becomes patterns. Patterns can become better products.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-6">
+      <div class="sm:border-r sm:border-[var(--line)] sm:pr-6"><span class="text-sm text-[var(--muted)] mono-tag">01</span><p class="mt-2">Listen</p></div>
+      <div class="sm:border-r sm:border-[var(--line)] sm:pr-6"><span class="text-sm text-[var(--muted)] mono-tag">02</span><p class="mt-2">Find patterns</p></div>
+      <div class="sm:border-r sm:border-[var(--line)] sm:pr-6"><span class="text-sm text-[var(--muted)] mono-tag">03</span><p class="mt-2">Build</p></div>
+      <div><span class="text-sm text-[var(--muted)] mono-tag">04</span><p class="mt-2">Measure</p></div>
+    </div>
+  </section>
+
+  <div class="rule max-w-6xl mx-auto"></div>
+
+  <!-- ================= QUIET IGRIS CTA ================= -->
+  <section class="max-w-6xl mx-auto px-6 sm:px-8 py-16 sm:py-20 reveal">
+    <div class="max-w-2xl">
+      <p class="text-sm text-[var(--muted)] mb-3">While you're here</p>
+      <p class="text-lg mb-2">Your business deserves better digital infrastructure.</p>
+      <p class="text-sm text-[var(--muted)] leading-relaxed mb-6">IGRIS Technologies builds modern websites, custom software, AI solutions, and automation.</p>
+      <a href="https://igris-tech.vercel.app" class="link-underline text-sm">Explore IGRIS Technologies</a>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="border-t border-[var(--ink)]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 py-24 sm:py-32 text-center">
+      <h2 class="text-3xl sm:text-5xl font-medium leading-tight max-w-2xl mx-auto">
+        Tell us what makes running your business harder than it should be.
+      </h2>
+      <a href="/survey" class="arrow-cta inline-flex items-center gap-2 mt-10 bg-[var(--ink)] text-white px-8 py-4 text-sm hover:opacity-90 transition-opacity duration-200">
+        Take the 2-minute survey <span class="arrow-glyph">→</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="border-t border-[var(--line)]">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 py-14">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+      <div class="flex items-center gap-3">
+        <img src="assets/igris-logo.png" alt="IGRIS Technologies" class="h-6 w-auto" />
+        <p class="text-sm text-[var(--muted)] max-w-xs">Business Pulse is a research initiative by IGRIS Technologies.</p>
+      </div>
+      <nav class="flex gap-6 text-sm">
+        <a href="#research" class="link-underline">Research</a>
+        <a href="/survey" class="link-underline">Survey</a>
+        <a href="https://igris-tech.vercel.app" class="link-underline">IGRIS Technologies</a>
+      </nav>
+    </div>
+    <p class="text-xs text-[var(--muted)] mt-10">© 2026 IGRIS Technologies</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
